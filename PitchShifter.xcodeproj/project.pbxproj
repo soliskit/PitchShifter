@@ -13,6 +13,7 @@
 		D6A5E8742423DDE300F74E2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6A5E8722423DDE300F74E2F /* Main.storyboard */; };
 		D6A5E8762423DDE600F74E2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6A5E8752423DDE600F74E2F /* Assets.xcassets */; };
 		D6A5E8792423DDE600F74E2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6A5E8772423DDE600F74E2F /* LaunchScreen.storyboard */; };
+		D6A5E8812423E37700F74E2F /* DownloadClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A5E8802423E37700F74E2F /* DownloadClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		D6A5E8752423DDE600F74E2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6A5E8782423DDE600F74E2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6A5E87A2423DDE600F74E2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6A5E8802423E37700F74E2F /* DownloadClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				D6A5E8752423DDE600F74E2F /* Assets.xcassets */,
 				D6A5E8772423DDE600F74E2F /* LaunchScreen.storyboard */,
 				D6A5E87A2423DDE600F74E2F /* Info.plist */,
+				D6A5E8802423E37700F74E2F /* DownloadClient.swift */,
 			);
 			path = PitchShifter;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6A5E8712423DDE300F74E2F /* ViewController.swift in Sources */,
+				D6A5E8812423E37700F74E2F /* DownloadClient.swift in Sources */,
 				D6A5E86D2423DDE300F74E2F /* AppDelegate.swift in Sources */,
 				D6A5E86F2423DDE300F74E2F /* SceneDelegate.swift in Sources */,
 			);
