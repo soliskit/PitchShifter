@@ -20,6 +20,7 @@
 		D6C9831D2439835A0095C25D /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C9831C2439835A0095C25D /* Parser.swift */; };
 		D6C9831F243989A10095C25D /* ParserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C9831E243989A10095C25D /* ParserError.swift */; };
 		D6C98323243A7A240095C25D /* ParserPropertyListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C98322243A7A240095C25D /* ParserPropertyListener.swift */; };
+		D6F0D540243A7DB60060C657 /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0D53F243A7DB60060C657 /* Reading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		D6C9831C2439835A0095C25D /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		D6C9831E243989A10095C25D /* ParserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserError.swift; sourceTree = "<group>"; };
 		D6C98322243A7A240095C25D /* ParserPropertyListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserPropertyListener.swift; sourceTree = "<group>"; };
+		D6F0D53F243A7DB60060C657 /* Reading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		D6C9831524397F760095C25D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D6F0D53F243A7DB60060C657 /* Reading.swift */,
 				D6A5E8802423E37700F74E2F /* DownloadClient.swift */,
 				D6C9831624397F880095C25D /* DownloadingState.swift */,
 				D6C9831824397FCC0095C25D /* DownloadingDelegate.swift */,
@@ -183,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6F0D540243A7DB60060C657 /* Reading.swift in Sources */,
 				D6C9831B243980CD0095C25D /* Parsing.swift in Sources */,
 				D6A5E8712423DDE300F74E2F /* ViewController.swift in Sources */,
 				D6A5E8812423E37700F74E2F /* DownloadClient.swift in Sources */,
