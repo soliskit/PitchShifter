@@ -71,13 +71,9 @@
 			isa = PBXGroup;
 			children = (
 				D6C9831524397F760095C25D /* Models */,
-				D6A5E86C2423DDE300F74E2F /* AppDelegate.swift */,
-				D6A5E86E2423DDE300F74E2F /* SceneDelegate.swift */,
-				D6A5E8702423DDE300F74E2F /* ViewController.swift */,
+				D6F0D53E243A7D4A0060C657 /* Controllers */,
 				D6A5E8722423DDE300F74E2F /* Main.storyboard */,
-				D6A5E8752423DDE600F74E2F /* Assets.xcassets */,
-				D6A5E8772423DDE600F74E2F /* LaunchScreen.storyboard */,
-				D6A5E87A2423DDE600F74E2F /* Info.plist */,
+				D6F0D53D243A7CD10060C657 /* Supporting Files */,
 			);
 			path = PitchShifter;
 			sourceTree = "<group>";
@@ -94,6 +90,26 @@
 				D6C9831E243989A10095C25D /* ParserError.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D6F0D53D243A7CD10060C657 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D6A5E86C2423DDE300F74E2F /* AppDelegate.swift */,
+				D6A5E86E2423DDE300F74E2F /* SceneDelegate.swift */,
+				D6A5E8752423DDE600F74E2F /* Assets.xcassets */,
+				D6A5E8772423DDE600F74E2F /* LaunchScreen.storyboard */,
+				D6A5E87A2423DDE600F74E2F /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D6F0D53E243A7D4A0060C657 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D6A5E8702423DDE300F74E2F /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,7 +338,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CZ72YFTC2R;
-				INFOPLIST_FILE = PitchShifter/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/PitchShifter/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -340,7 +357,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CZ72YFTC2R;
-				INFOPLIST_FILE = PitchShifter/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/PitchShifter/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
