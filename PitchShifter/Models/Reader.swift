@@ -6,7 +6,6 @@
 //  Copyright © 2020 David Solis. All rights reserved.
 //
 
-import AudioToolbox
 import AVFoundation
 
 /// The `Reader` is a concrete implementation of the `Reading` protocol and is intended to provide the audio data provider for an `AVAudioEngine`.
