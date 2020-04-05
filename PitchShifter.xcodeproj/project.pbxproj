@@ -16,6 +16,7 @@
 		D6A5E8812423E37700F74E2F /* DownloadClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A5E8802423E37700F74E2F /* DownloadClient.swift */; };
 		D6C9831724397F880095C25D /* DownloadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C9831624397F880095C25D /* DownloadingState.swift */; };
 		D6C9831924397FCC0095C25D /* DownloadingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C9831824397FCC0095C25D /* DownloadingDelegate.swift */; };
+		D6C9831B243980CD0095C25D /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C9831A243980CD0095C25D /* Parsing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D6A5E8802423E37700F74E2F /* DownloadClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadClient.swift; sourceTree = "<group>"; };
 		D6C9831624397F880095C25D /* DownloadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingState.swift; sourceTree = "<group>"; };
 		D6C9831824397FCC0095C25D /* DownloadingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingDelegate.swift; sourceTree = "<group>"; };
+		D6C9831A243980CD0095C25D /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				D6A5E8802423E37700F74E2F /* DownloadClient.swift */,
 				D6C9831624397F880095C25D /* DownloadingState.swift */,
 				D6C9831824397FCC0095C25D /* DownloadingDelegate.swift */,
+				D6C9831A243980CD0095C25D /* Parsing.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6C9831B243980CD0095C25D /* Parsing.swift in Sources */,
 				D6A5E8712423DDE300F74E2F /* ViewController.swift in Sources */,
 				D6A5E8812423E37700F74E2F /* DownloadClient.swift in Sources */,
 				D6A5E86D2423DDE300F74E2F /* AppDelegate.swift in Sources */,
