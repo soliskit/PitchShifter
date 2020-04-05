@@ -13,8 +13,7 @@ protocol Parsing: class {
     
     // MARK: - Properties
         
-    /// The data format of the audio. This describes the sample rate, frames per packet, bytes per packet, etc. Previously we'd use
-    /// an `AudioStreamBasicDescription`.
+    /// The data format of the audio. This describes the sample rate, frames per packet, bytes per packet, etc.
     var dataFormat: AVAudioFormat? { get }
     
     /// The total duration of the audio. For certain formats such as AAC or live streams this may be a guess or only equal to as many packets
