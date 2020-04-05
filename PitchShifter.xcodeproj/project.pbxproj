@@ -62,6 +62,7 @@
 		D6A5E86B2423DDE300F74E2F /* PitchShifter */ = {
 			isa = PBXGroup;
 			children = (
+				D6C9831524397F760095C25D /* Models */,
 				D6A5E86C2423DDE300F74E2F /* AppDelegate.swift */,
 				D6A5E86E2423DDE300F74E2F /* SceneDelegate.swift */,
 				D6A5E8702423DDE300F74E2F /* ViewController.swift */,
@@ -69,7 +70,6 @@
 				D6A5E8752423DDE600F74E2F /* Assets.xcassets */,
 				D6A5E8772423DDE600F74E2F /* LaunchScreen.storyboard */,
 				D6A5E87A2423DDE600F74E2F /* Info.plist */,
-				D6C9831524397F760095C25D /* Models */,
 			);
 			path = PitchShifter;
 			sourceTree = "<group>";
