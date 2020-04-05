@@ -17,6 +17,8 @@
 		D6C9831724397F880095C25D /* DownloadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C9831624397F880095C25D /* DownloadingState.swift */; };
 		D6C9831924397FCC0095C25D /* DownloadingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C9831824397FCC0095C25D /* DownloadingDelegate.swift */; };
 		D6C9831B243980CD0095C25D /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C9831A243980CD0095C25D /* Parsing.swift */; };
+		D6C9831D2439835A0095C25D /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C9831C2439835A0095C25D /* Parser.swift */; };
+		D6C9831F243989A10095C25D /* ParserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C9831E243989A10095C25D /* ParserError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		D6C9831624397F880095C25D /* DownloadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingState.swift; sourceTree = "<group>"; };
 		D6C9831824397FCC0095C25D /* DownloadingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingDelegate.swift; sourceTree = "<group>"; };
 		D6C9831A243980CD0095C25D /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
+		D6C9831C2439835A0095C25D /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		D6C9831E243989A10095C25D /* ParserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 				D6C9831624397F880095C25D /* DownloadingState.swift */,
 				D6C9831824397FCC0095C25D /* DownloadingDelegate.swift */,
 				D6C9831A243980CD0095C25D /* Parsing.swift */,
+				D6C9831C2439835A0095C25D /* Parser.swift */,
+				D6C9831E243989A10095C25D /* ParserError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -162,6 +168,8 @@
 				D6A5E8712423DDE300F74E2F /* ViewController.swift in Sources */,
 				D6A5E8812423E37700F74E2F /* DownloadClient.swift in Sources */,
 				D6A5E86D2423DDE300F74E2F /* AppDelegate.swift in Sources */,
+				D6C9831F243989A10095C25D /* ParserError.swift in Sources */,
+				D6C9831D2439835A0095C25D /* Parser.swift in Sources */,
 				D6C9831724397F880095C25D /* DownloadingState.swift in Sources */,
 				D6A5E86F2423DDE300F74E2F /* SceneDelegate.swift in Sources */,
 				D6C9831924397FCC0095C25D /* DownloadingDelegate.swift in Sources */,
