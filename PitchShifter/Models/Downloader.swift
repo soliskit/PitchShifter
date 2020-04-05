@@ -1,5 +1,5 @@
 //
-//  DownloadClient.swift
+//  Downloader.swift
 //  PitchShifter
 //
 //  Created by David Solis on 3/19/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DownloadClient: NSObject, Downloading {
+class Downloader: NSObject, Downloading {
     
     // MARK: - Properties
     var delegate: DownloadingDelegate?
@@ -94,7 +94,7 @@ class DownloadClient: NSObject, Downloading {
     }
 }
 
-extension DownloadClient: URLSessionDelegate {
+extension Downloader: URLSessionDelegate {
     func urlSession(_ session: URLSession,
                     dataTask: URLSessionDataTask,
                     didReceive response: URLResponse,

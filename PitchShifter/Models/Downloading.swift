@@ -1,5 +1,5 @@
 //
-//  DownloadingDelegate.swift
+//  Downloading.swift
 //  PitchShifter
 //
 //  Created by David Solis on 4/4/20.
@@ -38,11 +38,11 @@ protocol Downloading: class {
     func stop()
 }
 
-/// The `DownloadingDelegate` provides an interface for responding to changes to a `DownloadClient` instance.
+/// The `DownloadingDelegate` provides an interface for responding to changes to a `Downloader` instance.
 /// These include whenever the download state changes, when the download has completed (with or without an error), and when the downloader has received data.
 protocol DownloadingDelegate: class {
     
-    /// Triggered when a `DownloadClient` instance has changed its `Downloading` state during an existing download operation.
+    /// Triggered when a `Downloader` instance has changed its `Downloading` state during an existing download operation.
     ///
     /// - Parameters:
     ///   - download: The current `Downloading` instance
