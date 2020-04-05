@@ -125,6 +125,9 @@ protocol Downloading: class {
     /// A receiver implementing the `DownloadingDelegate` to receive state change, completion, and progress events from the `Downloading` instance
     var delegate: DownloadingDelegate? { get set }
     
+    /// A completion block for when the contents of the download are fully downloaded.
+    var completionHandler: ((Error?) -> Void)? { get set }
+    
     /// The current progress of the downloader. Ranges from 0.0 - 1.0, default is 0.0
     var progress: Double { get }
     
@@ -146,12 +149,40 @@ protocol Downloading: class {
     func stop()
 }
 
+/// The `DownloadingDelegate` provides an interface for responding to changes to a `DownloadClient` instance.
+/// These include whenever the download state changes, when the download has completed (with or without an error), and when the downloader has received data.
 protocol DownloadingDelegate: class {
+    
+    /// Triggered when a `DownloadClient` instance has changed its `Downloading` state during an existing download operation.
+    ///
+    /// - Parameters:
+    ///   - download: The current `Downloading` instance
+    ///   - state: The new `DownloadingState` the `Downloading` has transitioned to
     func download(_ download: Downloading, changedState state: DownloadingState)
+    
+    /// Triggered when a `Downloading` instance has fully completed its request.
+    ///
+    /// - Parameters:
+    ///   - download: The current `Downloading` instance
+    ///   - error: An optional `Error` if the download failed to complete. If there were no errors then this will be nil.
     func download(_ download: Downloading, completedWithError error: Error?)
+    
+    /// Triggered periodically whenever the `Downloading` instance has more data. In addition, this method provides the current progress of the overall operation as a float.
+    ///
+    /// - Parameters:
+    ///   - download: The current `Downloading` instance
+    ///   - data: A `Data` instance representing the current binary data
+    ///   - progress: A `Float` ranging from 0.0 - 1.0 representing the progress of the overall download operation.
     func download(_ download: Downloading, didReceiveData data: Data, progress: Double)
 }
 
+/// The various states of a download request.
+///
+/// - notStarted: The download has not started yet
+/// - started: The download has yet to start
+/// - paused: The download is paused
+/// - completed: The download has completed
+/// - stopped: The download has been stopped/cancelled
 enum DownloadingState: String {
     case notStarted
     case started
