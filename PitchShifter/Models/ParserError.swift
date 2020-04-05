@@ -6,7 +6,6 @@
 //  Copyright © 2020 David Solis. All rights reserved.
 //
 
-import Foundation
 import AudioToolbox
 
 /// Possible errors that can result from the `Parser` class.
