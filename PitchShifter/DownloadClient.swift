@@ -167,12 +167,12 @@ protocol DownloadingDelegate: class {
     ///   - error: An optional `Error` if the download failed to complete. If there were no errors then this will be nil.
     func download(_ download: Downloading, completedWithError error: Error?)
     
-    /// Triggered periodically whenever the `Downloading` instance has more data. In addition, this method provides the current progress of the overall operation as a float.
+    /// Triggered periodically whenever the `Downloading` instance has more data. In addition, this method provides the current progress of the overall operation as a Double.
     ///
     /// - Parameters:
     ///   - download: The current `Downloading` instance
     ///   - data: A `Data` instance representing the current binary data
-    ///   - progress: A `Float` ranging from 0.0 - 1.0 representing the progress of the overall download operation.
+    ///   - progress: A `Double` ranging from 0.0 - 1.0 representing the progress of the overall download operation.
     func download(_ download: Downloading, didReceiveData data: Data, progress: Double)
 }
 
