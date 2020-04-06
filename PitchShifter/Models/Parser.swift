@@ -10,25 +10,25 @@ import AVFoundation
 
 class Parser: Parsing {
     
-    var dataFormat: AVAudioFormat?
+    // MARK: - Properties
     
     var packets = [(Data, AudioStreamPacketDescription?)]()
-    
+    var dataFormat: AVAudioFormat?
+    /// The `AudioFileStreamID` used by the Audio File Stream Services for converting the binary data into audio packets
+    var streamID: AudioFileStreamID?
+     /// A `UInt64` corresponding to the total frame count parsed by the Audio File Stream Services
+    var frameCount: UInt64 = 0
+    /// A `UInt64` corresponding to the total packet count parsed by the Audio File Stream Services
+    var packetCount: UInt64 = 0
     var totalPacketCount: AVAudioPacketCount? {
         guard let _ = dataFormat else {
             return nil
         }
+        
         return max(AVAudioPacketCount(packetCount), AVAudioPacketCount(packets.count))
     }
     
-     /// A `UInt64` corresponding to the total frame count parsed by the Audio File Stream Services
-    var frameCount: UInt64 = 0
-       
-    /// A `UInt64` corresponding to the total packet count parsed by the Audio File Stream Services
-    var packetCount: UInt64 = 0
-       
-    /// The `AudioFileStreamID` used by the Audio File Stream Services for converting the binary data into audio packets
-    var streamID: AudioFileStreamID?
+    // MARK: - Lifecycle
     
     init() throws {
         let context = unsafeBitCast(self, to: UnsafeMutableRawPointer.self)
@@ -36,6 +36,8 @@ class Parser: Parsing {
             throw ParserError.streamCouldNotOpen
           }
     }
+    
+    // MARK: - Methods
     
     func parse(data: Data) throws {
         guard let streamID = self.streamID else {

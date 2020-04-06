@@ -14,30 +14,20 @@ import AVFoundation
 /// `AVAudioEngine` since the `AVAudioPlayerNode` requires we provide `AVAudioPCMBuffer` in the `scheduleBuffer` methods.
 class Reader: Reading {
     
-    // MARK: - Reading props
-    
-    var currentPacket: AVAudioPacketCount = 0
-    let parser: Parsing
-    let readFormat: AVAudioFormat
-    
     // MARK: - Properties
     
+    let parser: Parsing
+    /// A `DispatchQueue` used to ensure any operations we do changing the current packet index is thread-safe
+    let queue = DispatchQueue(label: "co.peaking.pitch_shifter")
+    let readFormat: AVAudioFormat
+    var currentPacket: AVAudioPacketCount = 0
     // TODO: - Use AVAudioConverter to convert audio file formats
     /// An `AudioConverterRef` used to do the conversion from the source format of the `parser` (i.e. the `sourceFormat`) to the read destination
     /// (i.e. the `destinationFormat`). This is provided by the Audio Conversion Services (I prefer it to the `AVAudioConverter`)
     var converter: AudioConverterRef? = nil
     
-    /// A `DispatchQueue` used to ensure any operations we do changing the current packet index is thread-safe
-    let queue = DispatchQueue(label: "co.peaking.pitch_shifter")
-    
     // MARK: - Lifecycle
-    
-    deinit {
-        guard AudioConverterDispose(converter!) == noErr else {
-            fatalError("Failed to dispose of audio converter")
-        }
-    }
-    
+        
     required init(parser: Parsing, readFormat: AVAudioFormat) throws {
         self.parser = parser
         
@@ -52,6 +42,12 @@ class Reader: Reading {
             throw ReaderError.unableToCreateConverter(result)
         }
         self.readFormat = readFormat
+    }
+    
+    deinit {
+        guard AudioConverterDispose(converter!) == noErr else {
+            fatalError("Failed to dispose of audio converter")
+        }
     }
     
     // MARK: - Methods

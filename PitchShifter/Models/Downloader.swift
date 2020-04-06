@@ -11,17 +11,26 @@ import Foundation
 class Downloader: NSObject, Downloading {
     
     // MARK: - Properties
+    
+    /// The `URLSession` currently being used as the HTTP/HTTPS implementation for the downloader.
+    private lazy var session: URLSession = {
+        return URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+    }()
+    /// A `URLSessionDataTask` representing the data operation for the current `URL`.
+    private var task: URLSessionDataTask?
     var delegate: DownloadingDelegate?
     var completionHandler: ((Error?) -> Void)?
     var progressHandler: ((Data, Double) -> Void)?
     var progress: Double = 0
-    
+    /// A `Int` representing the total amount of bytes received
+    var totalBytesReceived: Int = 0
+    /// A `Int` representing the total amount of bytes for the entire file
+    var totalBytesCount: Int = 0
     var state: DownloadingState = .notStarted {
         didSet {
             delegate?.download(self, changedState: state)
         }
     }
-    
     var url: URL? {
         didSet {
             if state == .started {
@@ -38,20 +47,6 @@ class Downloader: NSObject, Downloading {
             }
         }
     }
-
-    /// The `URLSession` currently being used as the HTTP/HTTPS implementation for the downloader.
-    private lazy var session: URLSession = {
-        return URLSession(configuration: .default, delegate: self, delegateQueue: nil)
-    }()
-
-    /// A `URLSessionDataTask` representing the data operation for the current `URL`.
-    private var task: URLSessionDataTask?
-
-    /// A `Int` representing the total amount of bytes received
-    var totalBytesReceived: Int = 0
-
-    /// A `Int` representing the total amount of bytes for the entire file
-    var totalBytesCount: Int = 0
     
     // MARK: - Downloading Protocol
     
