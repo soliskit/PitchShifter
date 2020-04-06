@@ -24,29 +24,10 @@ class Streamer: Streaming {
         return downloader
     }()
     var delegate: StreamingDelegate?
-    var duration: TimeInterval?
     var parser: Parsing?
     var reader: Reading?
-    var volumeRampTimer: Timer?
-    var volumeRampTargetValue: Float?
-    /// A `TimeInterval` used to calculate the current play time relative to a seek operation.
-    var currentTimeOffset: TimeInterval = 0
     /// A `Bool` indicating whether the file has been completely scheduled into the player node.
     var isFileSchedulingComplete = false
-    var currentTime: TimeInterval? {
-        guard let nodeTime = playerNode.lastRenderTime,
-            let playerTime = playerNode.playerTime(forNodeTime: nodeTime) else {
-            return currentTimeOffset
-        }
-        let currentTime = TimeInterval(playerTime.sampleTime) / playerTime.sampleRate
-        
-        return currentTime + currentTimeOffset
-    }
-    var state: StreamingState = .stopped {
-        didSet {
-            delegate?.streamer(self, changedState: state)
-        }
-    }
     var url: URL? {
         didSet {
             reset()
@@ -56,6 +37,23 @@ class Streamer: Streaming {
             }
         }
     }
+    var state: StreamingState = .stopped {
+        didSet {
+            delegate?.streamer(self, changedState: state)
+        }
+    }
+    var duration: TimeInterval?
+    /// A `TimeInterval` used to calculate the current play time relative to a seek operation.
+    var currentTime: TimeInterval? {
+        guard let nodeTime = playerNode.lastRenderTime,
+            let playerTime = playerNode.playerTime(forNodeTime: nodeTime) else {
+            return currentTimeOffset
+        }
+        let currentTime = TimeInterval(playerTime.sampleTime) / playerTime.sampleRate
+        
+        return currentTime + currentTimeOffset
+    }
+    var currentTimeOffset: TimeInterval = 0
     var volume: Float {
         get {
             return engine.mainMixerNode.outputVolume
@@ -64,6 +62,8 @@ class Streamer: Streaming {
             engine.mainMixerNode.outputVolume = newValue
         }
     }
+    var volumeRampTimer: Timer?
+    var volumeRampTargetValue: Float?
     /// A `Float` representing the pitch of the audio
     var pitch: Float {
         get {
@@ -104,8 +104,7 @@ class Streamer: Streaming {
         
         /// Use timer to schedule the buffers (this is not ideal, wish AVAudioEngine provided a pull-model for scheduling buffers)
         let interval = 1 / (readFormat.sampleRate / Double(readBufferSize))
-        let timer = Timer(timeInterval: interval / 2, repeats: true) {
-            [weak self] _ in
+        let timer = Timer(timeInterval: interval / 2, repeats: true) { [weak self] _ in
             guard self?.state != .stopped else {
                 return
             }
