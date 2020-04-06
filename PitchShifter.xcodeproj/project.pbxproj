@@ -27,6 +27,8 @@
 		D6F0D546243A95980060C657 /* Streaming.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0D545243A95980060C657 /* Streaming.swift */; };
 		D6F0D548243A9A9F0060C657 /* StreamingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0D547243A9A9F0060C657 /* StreamingDelegate.swift */; };
 		D6F0D54A243A9D190060C657 /* StreamingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0D549243A9D190060C657 /* StreamingState.swift */; };
+		D6F0D54C243A9FB90060C657 /* Streamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0D54B243A9FB90060C657 /* Streamer.swift */; };
+		D6F0D54E243AA17E0060C657 /* DownloadingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0D54D243AA17E0060C657 /* DownloadingDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		D6F0D545243A95980060C657 /* Streaming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streaming.swift; sourceTree = "<group>"; };
 		D6F0D547243A9A9F0060C657 /* StreamingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingDelegate.swift; sourceTree = "<group>"; };
 		D6F0D549243A9D190060C657 /* StreamingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingState.swift; sourceTree = "<group>"; };
+		D6F0D54B243A9FB90060C657 /* Streamer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streamer.swift; sourceTree = "<group>"; };
+		D6F0D54D243AA17E0060C657 /* DownloadingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 				D6F0D549243A9D190060C657 /* StreamingState.swift */,
 				D6F0D547243A9A9F0060C657 /* StreamingDelegate.swift */,
 				D6F0D545243A95980060C657 /* Streaming.swift */,
+				D6F0D54D243AA17E0060C657 /* DownloadingDelegate.swift */,
+				D6F0D54B243A9FB90060C657 /* Streamer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -219,7 +225,9 @@
 				D6C9831D2439835A0095C25D /* Parser.swift in Sources */,
 				D6C9831724397F880095C25D /* DownloadingState.swift in Sources */,
 				D6A5E86F2423DDE300F74E2F /* SceneDelegate.swift in Sources */,
+				D6F0D54C243A9FB90060C657 /* Streamer.swift in Sources */,
 				D6C9831924397FCC0095C25D /* Downloading.swift in Sources */,
+				D6F0D54E243AA17E0060C657 /* DownloadingDelegate.swift in Sources */,
 				D656C158243AA5EC0079D5CA /* ReaderConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
