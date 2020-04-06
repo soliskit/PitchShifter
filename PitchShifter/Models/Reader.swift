@@ -18,13 +18,13 @@ class Reader: Reading {
     
     let parser: Parsing
     /// A `DispatchQueue` used to ensure any operations we do changing the current packet index is thread-safe
-    let queue = DispatchQueue(label: "co.peaking.pitch_shifter")
     let readFormat: AVAudioFormat
-    var currentPacket: AVAudioPacketCount = 0
+    let queue = DispatchQueue(label: "co.peaking.pitch_shifter")
     // TODO: - Use AVAudioConverter to convert audio file formats
     /// An `AudioConverterRef` used to do the conversion from the source format of the `parser` (i.e. the `sourceFormat`) to the read destination
     /// (i.e. the `destinationFormat`). This is provided by the Audio Conversion Services (I prefer it to the `AVAudioConverter`)
     var converter: AudioConverterRef? = nil
+    var currentPacket: AVAudioPacketCount = 0
     
     // MARK: - Lifecycle
         
