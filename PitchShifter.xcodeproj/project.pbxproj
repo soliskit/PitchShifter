@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D61E2B0A243BF64600392705 /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61E2B09243BF64600392705 /* Reading.swift */; };
 		D656C158243AA5EC0079D5CA /* ReaderConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D656C157243AA5EC0079D5CA /* ReaderConverter.swift */; };
 		D6A5E86D2423DDE300F74E2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A5E86C2423DDE300F74E2F /* AppDelegate.swift */; };
 		D6A5E86F2423DDE300F74E2F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A5E86E2423DDE300F74E2F /* SceneDelegate.swift */; };
@@ -21,7 +22,6 @@
 		D6C9831D2439835A0095C25D /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C9831C2439835A0095C25D /* Parser.swift */; };
 		D6C9831F243989A10095C25D /* ParserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C9831E243989A10095C25D /* ParserError.swift */; };
 		D6C98323243A7A240095C25D /* ParserPropertyListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C98322243A7A240095C25D /* ParserPropertyListener.swift */; };
-		D6F0D540243A7DB60060C657 /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0D53F243A7DB60060C657 /* Reading.swift */; };
 		D6F0D542243A7DFB0060C657 /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0D541243A7DFB0060C657 /* Reader.swift */; };
 		D6F0D544243A7EE60060C657 /* ReaderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0D543243A7EE60060C657 /* ReaderError.swift */; };
 		D6F0D546243A95980060C657 /* Streaming.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0D545243A95980060C657 /* Streaming.swift */; };
@@ -32,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D61E2B09243BF64600392705 /* Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
 		D656C157243AA5EC0079D5CA /* ReaderConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderConverter.swift; sourceTree = "<group>"; };
 		D6A5E8692423DDE300F74E2F /* PitchShifter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PitchShifter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6A5E86C2423DDE300F74E2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,7 +49,6 @@
 		D6C9831C2439835A0095C25D /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		D6C9831E243989A10095C25D /* ParserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserError.swift; sourceTree = "<group>"; };
 		D6C98322243A7A240095C25D /* ParserPropertyListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserPropertyListener.swift; sourceTree = "<group>"; };
-		D6F0D53F243A7DB60060C657 /* Reading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = SOURCE_ROOT; };
 		D6F0D541243A7DFB0060C657 /* Reader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
 		D6F0D543243A7EE60060C657 /* ReaderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderError.swift; sourceTree = "<group>"; };
 		D6F0D545243A95980060C657 /* Streaming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streaming.swift; sourceTree = "<group>"; };
@@ -69,6 +69,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D61E2B08243BF5BC00392705 /* AudioClient */ = {
+			isa = PBXGroup;
+			children = (
+				D6C9831624397F880095C25D /* DownloadingState.swift */,
+				D6C9831824397FCC0095C25D /* Downloading.swift */,
+				D6A5E8802423E37700F74E2F /* Downloader.swift */,
+				D6C9831A243980CD0095C25D /* Parsing.swift */,
+				D6C98322243A7A240095C25D /* ParserPropertyListener.swift */,
+				D6C9831E243989A10095C25D /* ParserError.swift */,
+				D6C9831C2439835A0095C25D /* Parser.swift */,
+				D61E2B09243BF64600392705 /* Reading.swift */,
+				D6F0D543243A7EE60060C657 /* ReaderError.swift */,
+				D656C157243AA5EC0079D5CA /* ReaderConverter.swift */,
+				D6F0D541243A7DFB0060C657 /* Reader.swift */,
+				D6F0D549243A9D190060C657 /* StreamingState.swift */,
+				D6F0D547243A9A9F0060C657 /* StreamingDelegate.swift */,
+				D6F0D545243A95980060C657 /* Streaming.swift */,
+				D6F0D54D243AA17E0060C657 /* DownloadingDelegate.swift */,
+				D6F0D54B243A9FB90060C657 /* Streamer.swift */,
+			);
+			path = AudioClient;
+			sourceTree = "<group>";
+		};
 		D6A5E8602423DDE300F74E2F = {
 			isa = PBXGroup;
 			children = (
@@ -99,22 +122,7 @@
 		D6C9831524397F760095C25D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D6C9831624397F880095C25D /* DownloadingState.swift */,
-				D6C9831824397FCC0095C25D /* Downloading.swift */,
-				D6A5E8802423E37700F74E2F /* Downloader.swift */,
-				D6C9831A243980CD0095C25D /* Parsing.swift */,
-				D6C98322243A7A240095C25D /* ParserPropertyListener.swift */,
-				D6C9831E243989A10095C25D /* ParserError.swift */,
-				D6C9831C2439835A0095C25D /* Parser.swift */,
-				D6F0D53F243A7DB60060C657 /* Reading.swift */,
-				D6F0D543243A7EE60060C657 /* ReaderError.swift */,
-				D656C157243AA5EC0079D5CA /* ReaderConverter.swift */,
-				D6F0D541243A7DFB0060C657 /* Reader.swift */,
-				D6F0D549243A9D190060C657 /* StreamingState.swift */,
-				D6F0D547243A9A9F0060C657 /* StreamingDelegate.swift */,
-				D6F0D545243A95980060C657 /* Streaming.swift */,
-				D6F0D54D243AA17E0060C657 /* DownloadingDelegate.swift */,
-				D6F0D54B243A9FB90060C657 /* Streamer.swift */,
+				D61E2B08243BF5BC00392705 /* AudioClient */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -210,7 +218,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6F0D540243A7DB60060C657 /* Reading.swift in Sources */,
 				D6F0D548243A9A9F0060C657 /* StreamingDelegate.swift in Sources */,
 				D6C9831B243980CD0095C25D /* Parsing.swift in Sources */,
 				D6A5E8712423DDE300F74E2F /* ViewController.swift in Sources */,
@@ -228,6 +235,7 @@
 				D6F0D54C243A9FB90060C657 /* Streamer.swift in Sources */,
 				D6C9831924397FCC0095C25D /* Downloading.swift in Sources */,
 				D6F0D54E243AA17E0060C657 /* DownloadingDelegate.swift in Sources */,
+				D61E2B0A243BF64600392705 /* Reading.swift in Sources */,
 				D656C158243AA5EC0079D5CA /* ReaderConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
