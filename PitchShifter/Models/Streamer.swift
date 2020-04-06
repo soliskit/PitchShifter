@@ -136,7 +136,8 @@ class Streamer: Streaming {
             do {
                 try engine.start()
             } catch {
-                fatalError("Failed to start engine: \(error.localizedDescription)")
+                print("Failed to start engine: \(error.localizedDescription)")
+                return
             }
         }
         
