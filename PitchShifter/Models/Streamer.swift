@@ -15,6 +15,8 @@ class Streamer: Streaming {
     
     let engine = AVAudioEngine()
     let playerNode = AVAudioPlayerNode()
+    /// An `AVAudioUnitTimePitch` used to perform the time/pitch shift effect
+    let timePitchNode = AVAudioUnitTimePitch()
     lazy var downloader: Downloading = {
         let downloader = Downloader()
         downloader.delegate = self
@@ -62,6 +64,24 @@ class Streamer: Streaming {
             engine.mainMixerNode.outputVolume = newValue
         }
     }
+    /// A `Float` representing the pitch of the audio
+    var pitch: Float {
+        get {
+            return timePitchNode.pitch
+        }
+        set {
+            timePitchNode.pitch = newValue
+        }
+    }
+    /// A `Float` representing the playback rate of the audio
+    var rate: Float {
+        get {
+            return timePitchNode.rate
+        }
+        set {
+            timePitchNode.rate = newValue
+        }
+    }
 
     // MARK: - Lifecycle
     
@@ -100,11 +120,13 @@ class Streamer: Streaming {
     /// Subclass can override this to attach additional nodes to the engine before it is prepared. Default implementation attaches the `playerNode`. Subclass should call super or be sure to attach the playerNode.
     func attachNodes() {
         engine.attach(playerNode)
+        engine.attach(timePitchNode)
     }
 
     /// Subclass can override this to make custom node connections in the engine before it is prepared. Default implementation connects the playerNode to the mainMixerNode on the `AVAudioEngine` using the default `readFormat`. Subclass should use the `readFormat` property when connecting nodes.
     func connectNodes() {
-        engine.connect(playerNode, to: engine.mainMixerNode, format: readFormat)
+        engine.connect(playerNode, to: timePitchNode, format: readFormat)
+        engine.connect(timePitchNode, to: engine.mainMixerNode, format: readFormat)
     }
     
     // MARK: - Reset
