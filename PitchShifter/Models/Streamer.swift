@@ -240,7 +240,8 @@ class Streamer: Streaming {
 
     func scheduleNextBuffer() {
         guard let reader = reader else {
-            fatalError("No reader yet...")
+            print("No reader yet...")
+            return
         }
 
         guard !isFileSchedulingComplete else {
