@@ -181,6 +181,7 @@ class Streamer: Streaming {
     func seek(to time: TimeInterval) throws {
         // Make sure we have a valid parser and reader
         guard let parser = parser, let reader = reader else {
+            print("No reader or parser yet...")
             return
         }
         
