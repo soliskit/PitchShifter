@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D656C158243AA5EC0079D5CA /* ReaderConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D656C157243AA5EC0079D5CA /* ReaderConverter.swift */; };
 		D6A5E86D2423DDE300F74E2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A5E86C2423DDE300F74E2F /* AppDelegate.swift */; };
 		D6A5E86F2423DDE300F74E2F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A5E86E2423DDE300F74E2F /* SceneDelegate.swift */; };
 		D6A5E8712423DDE300F74E2F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A5E8702423DDE300F74E2F /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D656C157243AA5EC0079D5CA /* ReaderConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderConverter.swift; sourceTree = "<group>"; };
 		D6A5E8692423DDE300F74E2F /* PitchShifter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PitchShifter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6A5E86C2423DDE300F74E2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6A5E86E2423DDE300F74E2F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				D6C9831C2439835A0095C25D /* Parser.swift */,
 				D6F0D53F243A7DB60060C657 /* Reading.swift */,
 				D6F0D543243A7EE60060C657 /* ReaderError.swift */,
+				D656C157243AA5EC0079D5CA /* ReaderConverter.swift */,
 				D6F0D541243A7DFB0060C657 /* Reader.swift */,
 				D6F0D549243A9D190060C657 /* StreamingState.swift */,
 				D6F0D547243A9A9F0060C657 /* StreamingDelegate.swift */,
@@ -217,6 +220,7 @@
 				D6C9831724397F880095C25D /* DownloadingState.swift in Sources */,
 				D6A5E86F2423DDE300F74E2F /* SceneDelegate.swift in Sources */,
 				D6C9831924397FCC0095C25D /* Downloading.swift in Sources */,
+				D656C158243AA5EC0079D5CA /* ReaderConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
