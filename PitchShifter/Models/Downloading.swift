@@ -14,17 +14,17 @@ protocol Downloading: class {
     /// A receiver implementing the `DownloadingDelegate` to receive state change, completion, and progress events from the `Downloading` instance
     var delegate: DownloadingDelegate? { get set }
     
-    /// A completion block for when the contents of the download are fully downloaded.
-    var completionHandler: ((Error?) -> Void)? { get set }
-    
-    /// The current progress of the downloader. Ranges from 0.0 - 1.0, default is 0.0
-    var progress: Double { get }
+    /// A `URL` representing the current URL the downloader is fetching. This is an optional because this protocol is designed to allow classes implementing the `Downloading` protocol to be used as singeltons for many different URLS so a common cache can be used to to redownloading the same resources
+    var url: URL? { get set }
     
     /// The current state of the downloader. See `DownloadingState` for the different prossible states
     var state: DownloadingState { get }
     
-    /// A `URL` representing the current URL the downloader is fetching. This is an optional because this protocol is designed to allow classes implementing the `Downloading` protocol to be used as singeltons for many different URLS so a common cache can be used to to redownloading the same resources
-    var url: URL? { get set }
+    /// The current progress of the downloader. Ranges from 0.0 - 1.0, default is 0.0
+    var progress: Double { get }
+    
+    /// A completion block for when the contents of the download are fully downloaded.
+    var completionHandler: ((Error?) -> Void)? { get set }
     
     // MARK:- Methods
     

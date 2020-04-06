@@ -12,7 +12,11 @@ import AVFoundation
 protocol Parsing: class {
     
     // MARK: - Properties
-        
+    
+    /// An array of duples, each index presenting a parsed audio packet. For compressed formats each packet of data should contain a
+    /// `AudioStreamPacketDescription`, which describes the start offset and length of the audio data)
+    var packets: [(Data, AudioStreamPacketDescription?)] { get }
+    
     /// The data format of the audio. This describes the sample rate, frames per packet, bytes per packet, etc.
     var dataFormat: AVAudioFormat? { get }
     
@@ -23,10 +27,6 @@ protocol Parsing: class {
     /// A `Bool` indicating whether all the audio packets have been parsed relative to the total packet count. This is optional where the default implementation
     /// will check if the total packets parsed (i.e. the count of `packets` property) is equal to the `totalPacketCount` property
     var isParsingComplete: Bool { get }
-    
-    /// An array of duples, each index presenting a parsed audio packet. For compressed formats each packet of data should contain a
-    /// `AudioStreamPacketDescription`, which describes the start offset and length of the audio data)
-    var packets: [(Data, AudioStreamPacketDescription?)] { get }
     
     /// The total number of frames (expressed in the data format)
     var totalFrameCount: AVAudioFrameCount? { get }

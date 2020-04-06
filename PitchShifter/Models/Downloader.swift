@@ -19,18 +19,6 @@ class Downloader: NSObject, Downloading {
     /// A `URLSessionDataTask` representing the data operation for the current `URL`.
     private var task: URLSessionDataTask?
     var delegate: DownloadingDelegate?
-    var completionHandler: ((Error?) -> Void)?
-    var progressHandler: ((Data, Double) -> Void)?
-    var progress: Double = 0
-    /// A `Int` representing the total amount of bytes received
-    var totalBytesReceived: Int = 0
-    /// A `Int` representing the total amount of bytes for the entire file
-    var totalBytesCount: Int = 0
-    var state: DownloadingState = .notStarted {
-        didSet {
-            delegate?.download(self, changedState: state)
-        }
-    }
     var url: URL? {
         didSet {
             if state == .started {
@@ -47,6 +35,18 @@ class Downloader: NSObject, Downloading {
             }
         }
     }
+    var state: DownloadingState = .notStarted {
+        didSet {
+            delegate?.download(self, changedState: state)
+        }
+    }
+    var progress: Double = 0
+    var progressHandler: ((Data, Double) -> Void)?
+    var completionHandler: ((Error?) -> Void)?
+    /// A `Int` representing the total amount of bytes for the entire file
+    var totalBytesCount: Int = 0
+    /// A `Int` representing the total amount of bytes received
+    var totalBytesReceived: Int = 0
     
     // MARK: - Downloading Protocol
     
