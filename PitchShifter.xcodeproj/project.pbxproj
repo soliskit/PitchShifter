@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D61E2B0A243BF64600392705 /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61E2B09243BF64600392705 /* Reading.swift */; };
+		D61E2B0D243BF79600392705 /* ProgressSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61E2B0C243BF79600392705 /* ProgressSlider.swift */; };
 		D656C158243AA5EC0079D5CA /* ReaderConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D656C157243AA5EC0079D5CA /* ReaderConverter.swift */; };
 		D6A5E86D2423DDE300F74E2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A5E86C2423DDE300F74E2F /* AppDelegate.swift */; };
 		D6A5E86F2423DDE300F74E2F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A5E86E2423DDE300F74E2F /* SceneDelegate.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		D61E2B09243BF64600392705 /* Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
+		D61E2B0C243BF79600392705 /* ProgressSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSlider.swift; sourceTree = "<group>"; };
 		D656C157243AA5EC0079D5CA /* ReaderConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderConverter.swift; sourceTree = "<group>"; };
 		D6A5E8692423DDE300F74E2F /* PitchShifter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PitchShifter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6A5E86C2423DDE300F74E2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,14 @@
 			path = AudioClient;
 			sourceTree = "<group>";
 		};
+		D61E2B0B243BF71B00392705 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D61E2B0C243BF79600392705 /* ProgressSlider.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		D6A5E8602423DDE300F74E2F = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +123,7 @@
 			children = (
 				D6C9831524397F760095C25D /* Models */,
 				D6F0D53E243A7D4A0060C657 /* Controllers */,
+				D61E2B0B243BF71B00392705 /* Views */,
 				D6A5E8722423DDE300F74E2F /* Main.storyboard */,
 				D6F0D53D243A7CD10060C657 /* Supporting Files */,
 			);
@@ -225,6 +236,7 @@
 				D6F0D544243A7EE60060C657 /* ReaderError.swift in Sources */,
 				D6C98323243A7A240095C25D /* ParserPropertyListener.swift in Sources */,
 				D6A5E86D2423DDE300F74E2F /* AppDelegate.swift in Sources */,
+				D61E2B0D243BF79600392705 /* ProgressSlider.swift in Sources */,
 				D6F0D542243A7DFB0060C657 /* Reader.swift in Sources */,
 				D6F0D546243A95980060C657 /* Streaming.swift in Sources */,
 				D6F0D54A243A9D190060C657 /* StreamingState.swift in Sources */,
