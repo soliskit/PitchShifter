@@ -130,6 +130,12 @@
                                                         <color key="value" red="0.19353222849999999" green="0.24112924929999999" blue="0.33726662400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="progressSliderTouchedDown:" destination="BYZ-38-t0r" eventType="touchDown" id="Tks-YO-lhN"/>
+                                                    <action selector="progressSliderTouchedUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Yq-Jm-tOx"/>
+                                                    <action selector="progressSliderTouchedUp:" destination="BYZ-38-t0r" eventType="touchUpOutside" id="rLi-eW-17W"/>
+                                                    <action selector="progressSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="BK0-j9-oPO"/>
+                                                </connections>
                                             </slider>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dLB-cH-59Y">
                                                 <rect key="frame" x="0.0" y="142" width="311" height="64"/>
