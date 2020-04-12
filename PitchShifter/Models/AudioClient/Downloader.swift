@@ -12,6 +12,8 @@ import os.log
 class Downloader: NSObject, Downloading {
     
     static let logger = OSLog(subsystem: "co.peaking.pitchShifter", category: "Downloader")
+    static var shared: Downloader = Downloader()
+    
     // MARK: - Properties
     
     /// The `URLSession` currently being used as the HTTP/HTTPS implementation for the downloader.

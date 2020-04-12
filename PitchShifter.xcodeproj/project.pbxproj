@@ -17,6 +17,10 @@
 		D6A5E8762423DDE600F74E2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6A5E8752423DDE600F74E2F /* Assets.xcassets */; };
 		D6A5E8792423DDE600F74E2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6A5E8772423DDE600F74E2F /* LaunchScreen.storyboard */; };
 		D6A5E8812423E37700F74E2F /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A5E8802423E37700F74E2F /* Downloader.swift */; };
+		D6BD6EF1243ED82C0055BB9E /* RemoteFileUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BD6EF0243ED82C0055BB9E /* RemoteFileUrl.swift */; };
+		D6BD6EF3243ED8640055BB9E /* DownloaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BD6EF2243ED8640055BB9E /* DownloaderTests.swift */; };
+		D6BD6EF5243ED99E0055BB9E /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BD6EF4243ED99E0055BB9E /* ParserTests.swift */; };
+		D6BD6EF7243ED9C20055BB9E /* ReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BD6EF6243ED9C20055BB9E /* ReaderTests.swift */; };
 		D6C9831724397F880095C25D /* DownloadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C9831624397F880095C25D /* DownloadingState.swift */; };
 		D6C9831924397FCC0095C25D /* Downloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C9831824397FCC0095C25D /* Downloading.swift */; };
 		D6C9831B243980CD0095C25D /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C9831A243980CD0095C25D /* Parsing.swift */; };
@@ -32,6 +36,16 @@
 		D6F0D54E243AA17E0060C657 /* DownloadingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0D54D243AA17E0060C657 /* DownloadingDelegate.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D6BD6EEB243ED80C0055BB9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6A5E8612423DDE300F74E2F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D6A5E8682423DDE300F74E2F;
+			remoteInfo = PitchShifter;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		D61E2B09243BF64600392705 /* Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
 		D61E2B0C243BF79600392705 /* ProgressSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSlider.swift; sourceTree = "<group>"; };
@@ -45,6 +59,12 @@
 		D6A5E8782423DDE600F74E2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6A5E87A2423DDE600F74E2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6A5E8802423E37700F74E2F /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		D6BD6EE6243ED80C0055BB9E /* PitchShifterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitchShifterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6BD6EEA243ED80C0055BB9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6BD6EF0243ED82C0055BB9E /* RemoteFileUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFileUrl.swift; sourceTree = "<group>"; };
+		D6BD6EF2243ED8640055BB9E /* DownloaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloaderTests.swift; sourceTree = "<group>"; };
+		D6BD6EF4243ED99E0055BB9E /* ParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
+		D6BD6EF6243ED9C20055BB9E /* ReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderTests.swift; sourceTree = "<group>"; };
 		D6C9831624397F880095C25D /* DownloadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingState.swift; sourceTree = "<group>"; };
 		D6C9831824397FCC0095C25D /* Downloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloading.swift; sourceTree = "<group>"; };
 		D6C9831A243980CD0095C25D /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
@@ -62,6 +82,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		D6A5E8662423DDE300F74E2F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6BD6EE3243ED80C0055BB9E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -106,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				D6A5E86B2423DDE300F74E2F /* PitchShifter */,
+				D6BD6EE7243ED80C0055BB9E /* PitchShifterTests */,
 				D6A5E86A2423DDE300F74E2F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				D6A5E8692423DDE300F74E2F /* PitchShifter.app */,
+				D6BD6EE6243ED80C0055BB9E /* PitchShifterTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,6 +157,18 @@
 				D6F0D53D243A7CD10060C657 /* Supporting Files */,
 			);
 			path = PitchShifter;
+			sourceTree = "<group>";
+		};
+		D6BD6EE7243ED80C0055BB9E /* PitchShifterTests */ = {
+			isa = PBXGroup;
+			children = (
+				D6BD6EF0243ED82C0055BB9E /* RemoteFileUrl.swift */,
+				D6BD6EF2243ED8640055BB9E /* DownloaderTests.swift */,
+				D6BD6EF4243ED99E0055BB9E /* ParserTests.swift */,
+				D6BD6EF6243ED9C20055BB9E /* ReaderTests.swift */,
+				D6BD6EEA243ED80C0055BB9E /* Info.plist */,
+			);
+			path = PitchShifterTests;
 			sourceTree = "<group>";
 		};
 		D6C9831524397F760095C25D /* Models */ = {
@@ -178,18 +219,40 @@
 			productReference = D6A5E8692423DDE300F74E2F /* PitchShifter.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D6BD6EE5243ED80C0055BB9E /* PitchShifterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6BD6EED243ED80C0055BB9E /* Build configuration list for PBXNativeTarget "PitchShifterTests" */;
+			buildPhases = (
+				D6BD6EE2243ED80C0055BB9E /* Sources */,
+				D6BD6EE3243ED80C0055BB9E /* Frameworks */,
+				D6BD6EE4243ED80C0055BB9E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D6BD6EEC243ED80C0055BB9E /* PBXTargetDependency */,
+			);
+			name = PitchShifterTests;
+			productName = PitchShifterTests;
+			productReference = D6BD6EE6243ED80C0055BB9E /* PitchShifterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		D6A5E8612423DDE300F74E2F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "David Solis";
 				TargetAttributes = {
 					D6A5E8682423DDE300F74E2F = {
 						CreatedOnToolsVersion = 11.3.1;
+					};
+					D6BD6EE5243ED80C0055BB9E = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = D6A5E8682423DDE300F74E2F;
 					};
 				};
 			};
@@ -207,6 +270,7 @@
 			projectRoot = "";
 			targets = (
 				D6A5E8682423DDE300F74E2F /* PitchShifter */,
+				D6BD6EE5243ED80C0055BB9E /* PitchShifterTests */,
 			);
 		};
 /* End PBXProject section */
@@ -219,6 +283,13 @@
 				D6A5E8792423DDE600F74E2F /* LaunchScreen.storyboard in Resources */,
 				D6A5E8762423DDE600F74E2F /* Assets.xcassets in Resources */,
 				D6A5E8742423DDE300F74E2F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6BD6EE4243ED80C0055BB9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +323,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D6BD6EE2243ED80C0055BB9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6BD6EF5243ED99E0055BB9E /* ParserTests.swift in Sources */,
+				D6BD6EF3243ED8640055BB9E /* DownloaderTests.swift in Sources */,
+				D6BD6EF7243ED9C20055BB9E /* ReaderTests.swift in Sources */,
+				D6BD6EF1243ED82C0055BB9E /* RemoteFileUrl.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D6BD6EEC243ED80C0055BB9E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D6A5E8682423DDE300F74E2F /* PitchShifter */;
+			targetProxy = D6BD6EEB243ED80C0055BB9E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D6A5E8722423DDE300F74E2F /* Main.storyboard */ = {
@@ -426,6 +516,48 @@
 			};
 			name = Release;
 		};
+		D6BD6EEE243ED80C0055BB9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CZ72YFTC2R;
+				INFOPLIST_FILE = PitchShifterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.peaking.PitchShifterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PitchShifter.app/PitchShifter";
+			};
+			name = Debug;
+		};
+		D6BD6EEF243ED80C0055BB9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CZ72YFTC2R;
+				INFOPLIST_FILE = PitchShifterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = co.peaking.PitchShifterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PitchShifter.app/PitchShifter";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -443,6 +575,15 @@
 			buildConfigurations = (
 				D6A5E87E2423DDE600F74E2F /* Debug */,
 				D6A5E87F2423DDE600F74E2F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D6BD6EED243ED80C0055BB9E /* Build configuration list for PBXNativeTarget "PitchShifterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6BD6EEE243ED80C0055BB9E /* Debug */,
+				D6BD6EEF243ED80C0055BB9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
