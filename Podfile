@@ -4,11 +4,10 @@
 target 'PitchShifter' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
-  # Pods for PitchShifter
+  pod 'SwiftAudioPlayer'
 
   target 'PitchShifterTests' do
-    pod 'SwiftAudioPlayer'
+    
   end
 
 end
