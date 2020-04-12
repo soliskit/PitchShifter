@@ -6,26 +6,31 @@
 //  Copyright © 2020 David Solis. All rights reserved.
 //
 
+import os.log
 import Foundation
 
 extension Streamer: DownloadingDelegate {
 
     func download(_ download: Downloading, completedWithError error: Error?) {
         if let error = error, let url = download.url {
-            print(error.localizedDescription)
+            os_log("%@ [error: %@] - line %d", log: Streamer.logger, type: .debug, #function, error.localizedDescription, #line)
             DispatchQueue.main.async { [unowned self] in
                 self.delegate?.streamer(self, failedDownloadWithError: error, forURL: url)
             }
+        } else {
+            fatalError("Completed with error")
         }
     }
     
     func download(_ download: Downloading, changedState downloadState: DownloadingState) {
-        print(downloadState.rawValue)
+        os_log("%@ [state: %@] - line %d", log: Streamer.logger, type: .debug, #function, downloadState.rawValue, #line)
     }
     
     func download(_ download: Downloading, didReceiveData data: Data, progress: Double) {
+        os_log("%@ - line %d", log: Streamer.logger, type: .debug, #function, #line)
+        
         guard let parser = parser else {
-            print("Expected parser, bail...")
+            os_log("Expected parser, bail - line %d", log: Streamer.logger, type: .error, #line)
             return
         }
         
@@ -33,7 +38,9 @@ extension Streamer: DownloadingDelegate {
         do {
             try parser.parse(data: data)
         } catch {
-            fatalError(error.localizedDescription)
+            os_log("[error: Failed to parse] - line %d", log: Streamer.logger, type: .error, #line)
+            print(error.localizedDescription)
+            return
         }
         
         /// Once there's enough data to start producing packets we can use the data format
@@ -41,7 +48,9 @@ extension Streamer: DownloadingDelegate {
             do {
                 reader = try Reader(parser: parser, readFormat: readFormat)
             } catch {
-                fatalError("Failed to create reader: \(error.localizedDescription)")
+                os_log("[error: Failed to create reader] - line %d", log: Streamer.logger, type: .error, #line)
+                print(error.localizedDescription)
+                return
             }
         }
         

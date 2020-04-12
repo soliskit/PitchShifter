@@ -6,11 +6,14 @@
 //  Copyright © 2020 David Solis. All rights reserved.
 //
 
+import os.log
 import AVFoundation
 
 /// The `Streamer` is a concrete implementation of the `Streaming` protocol and is intended to provide a high-level, extendable class for streaming an audio file living at a URL on the internet. Subclasses can override the `attachNodes` and `connectNodes` methods to insert custom effects.
 class Streamer: Streaming {
-
+    
+    static let logger = OSLog(subsystem: "co.peaking.pitchShifter", category: "Streamer")
+    
     // MARK: - Properties
     
     let engine = AVAudioEngine()
@@ -93,6 +96,8 @@ class Streamer: Streaming {
     // MARK: - Setup
 
     func setupAudioEngine() {
+        os_log("%@ - line %d", log: Streamer.logger, type: .debug, #function, #line)
+        
         // Attach nodes
         attachNodes()
 
@@ -131,6 +136,8 @@ class Streamer: Streaming {
     // MARK: - Reset
     
     func reset() {
+        os_log("%@ - line %d", log: Streamer.logger, type: .debug, #function, #line)
+        
         // Reset the playback state
         stop()
         duration = nil
@@ -141,13 +148,17 @@ class Streamer: Streaming {
         do {
             parser = try Parser()
         } catch {
-            fatalError("Failed to create parser: \(error.localizedDescription)")
+            os_log("[error: Failed to create parser] - line %d", log: Streamer.logger, type: .error, #line)
+            print(error.localizedDescription)
+            return
         }
     }
     
     // MARK: - Methods
     
     func play() {
+        os_log("%@ - line %d", log: Streamer.logger, type: .debug, #function, #line)
+        
         // Check we're not already playing
         guard !playerNode.isPlaying else {
             return
@@ -157,7 +168,8 @@ class Streamer: Streaming {
             do {
                 try engine.start()
             } catch {
-                print("Failed to start engine: \(error.localizedDescription)")
+                os_log("[error: Failed to start engine] - line %d", log: Streamer.logger, type: .error, #line)
+                print(error.localizedDescription)
                 return
             }
         }
@@ -177,6 +189,8 @@ class Streamer: Streaming {
     }
     
     func pause() {
+        os_log("%@ - line %d", log: Streamer.logger, type: .debug, #function, #line)
+        
         // Check if the player node is playing
         guard playerNode.isPlaying else {
             return
@@ -190,6 +204,8 @@ class Streamer: Streaming {
     }
     
     func stop() {
+        os_log("%@ - line %d", log: Streamer.logger, type: .debug, #function, #line)
+        
         // Stop the downloader, the player node, and the engine
         downloader.stop()
         playerNode.stop()
@@ -200,9 +216,11 @@ class Streamer: Streaming {
     }
     
     func seek(to time: TimeInterval) throws {
+        os_log("%@ [%.1f] - line %d", log: Streamer.logger, type: .debug, #function, time, #line)
+        
         // Make sure we have a valid parser and reader
         guard let parser = parser, let reader = reader else {
-            print("No reader or parser yet...")
+            os_log("[debug: No reader or parser yet] - line %d", log: Streamer.logger, type: .debug, #line)
             return
         }
         
@@ -226,7 +244,9 @@ class Streamer: Streaming {
         do {
             try reader.seek(packetOffset)
         } catch {
-            fatalError("Failed to seek: \(error.localizedDescription)")
+            os_log("[error: Failed to seek] - line %d", log: Streamer.logger, type: .error, #line)
+            print(error.localizedDescription)
+            return
         }
         
         // If the player node was previous playing then resume playback
@@ -263,7 +283,7 @@ class Streamer: Streaming {
 
     func scheduleNextBuffer() {
         guard let reader = reader else {
-            print("No reader yet...")
+            os_log("No reader yet - line %d", log: Streamer.logger, type: .debug, #line)
             return
         }
 
@@ -275,10 +295,11 @@ class Streamer: Streaming {
             let nextScheduledBuffer = try reader.read(readBufferSize)
             playerNode.scheduleBuffer(nextScheduledBuffer)
         } catch ReaderError.reachedEndOfFile {
-            print("Scheduler reached end of file")
+            os_log("Scheduler reached end of file - line %d", log: Streamer.logger, type: .debug, #line)
             isFileSchedulingComplete = true
         } catch {
-            fatalError("Cannot schedule buffer: \(error.localizedDescription)")
+            os_log("Cannot schedule buffer [error: %@] - line %d", log: Streamer.logger, type: .debug, error.localizedDescription, #line)
+            return
         }
     }
 
@@ -319,7 +340,7 @@ class Streamer: Streaming {
 
     func notifyDownloadProgress(_ progress: Float) {
         guard let url = url else {
-            return
+            fatalError("Invalid URL")
         }
 
         delegate?.streamer(self, updatedDownloadProgress: progress, forURL: url)
@@ -327,7 +348,7 @@ class Streamer: Streaming {
 
     func notifyDurationUpdate(_ duration: TimeInterval) {
         guard let _ = url else {
-            return
+            fatalError("Invalid URL")
         }
 
         delegate?.streamer(self, updatedDuration: duration)

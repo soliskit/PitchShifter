@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import os.log
 
 class Downloader: NSObject, Downloading {
     
+    static let logger = OSLog(subsystem: "co.peaking.pitchShifter", category: "Downloader")
     // MARK: - Properties
     
     /// The `URLSession` currently being used as the HTTP/HTTPS implementation for the downloader.
@@ -51,9 +53,10 @@ class Downloader: NSObject, Downloading {
     // MARK: - Downloading Protocol
     
     func start() {
-        guard let task = task else {
-            fatalError("Task does not exist")
+        guard let url = url, let task = task else {
+            fatalError("URL is broken or missing task")
         }
+        os_log("%@ [audioUrl: %@] [%@] - line %d", log: Downloader.logger, type: .debug, #function, url.absoluteString, "\(task)" ,#line)
         
         switch state {
             case .completed, .started:
@@ -65,6 +68,8 @@ class Downloader: NSObject, Downloading {
     }
     
     func pause() {
+        os_log("%@ - line %d", log: Downloader.logger, type: .debug, #function, #line)
+        
         guard let task = task else {
             fatalError("Task does not exist")
         }
@@ -77,8 +82,11 @@ class Downloader: NSObject, Downloading {
     }
     
     func stop() {
+        os_log("%@ - line %d", log: Downloader.logger, type: .debug, #function, #line)
+        
         guard let task = task else {
-            fatalError("Task does not exist")
+            os_log("%@ [debug: Task does not exist] - line %d", log: Downloader.logger, type: .debug, #function, #line)
+            return
         }
         guard state == .started else {
             return
@@ -95,19 +103,22 @@ extension Downloader: URLSessionDelegate {
                     didReceive response: URLResponse,
                     completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
         totalBytesCount = Int(response.expectedContentLength)
+        os_log("%@ [response: %@] - line %d", log: Downloader.logger, type: .debug, #function, response, #line)
         completionHandler(.allow)
     }
 
     func urlSession(_ session: URLSession,
                     dataTask: URLSessionDataTask,
                     didReceive data: Data) {
-        totalBytesReceived += data.count
+        os_log("%@ [dataCount: %@] - line %d", log: Downloader.logger, type: .debug, #function, data.count, #line)
         progress = Double(totalBytesReceived) / Double(totalBytesCount)
         delegate?.download(self, didReceiveData: data, progress: progress)
         progressHandler?(data, progress)
     }
 
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        os_log("%@ [%@] - line %d", log: Downloader.logger, type: .error, #function, error.debugDescription, #line)
+        
         state = .completed
         delegate?.download(self, completedWithError: error)
         completionHandler?(error)

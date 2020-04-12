@@ -6,10 +6,13 @@
 //  Copyright © 2020 David Solis. All rights reserved.
 //
 
+import os.log
 import UIKit
 import AVFoundation
 
 class ViewController: UIViewController {
+    
+    static let logger = OSLog(subsystem: "co.peaking.pitchShifter", category: "ViewController")
     
     // MARK: - Outlets
     @IBOutlet weak var pitchLabel: UILabel!
@@ -56,7 +59,8 @@ class ViewController: UIViewController {
             try session.setCategory(.playback, mode: .default, policy: .default, options: [.allowBluetoothA2DP,.defaultToSpeaker])
             try session.setActive(true)
         } catch {
-            fatalError("Failed to activate audio session: \(error.localizedDescription)")
+            os_log("%@ [error: Failed to activate audio session] - line %d", log: ViewController.logger, type: .error, #function, #line)
+            print(error.localizedDescription)
         }
     }
 
@@ -74,24 +78,34 @@ class ViewController: UIViewController {
     // MARK: - Handle Seeking
     
     @IBAction func seek(_ sender: UISlider) {
+        os_log("%@ [%.1f] - line %d", log: ViewController.logger, type: .debug, #function, progressSlider.value, #line)
+        
         do {
             let time = TimeInterval(progressSlider.value)
             try streamer.seek(to: time)
         } catch {
-            fatalError("Failed to seek: \(error.localizedDescription)")
+            os_log("[error: Failed to seek] - line %d", log: ViewController.logger, type: .error, #line)
+            print("\(error.localizedDescription)")
+            return
         }
     }
     
     @IBAction func progressSliderTouchedDown(_ sender: UISlider) {
+        os_log("%@ - line %d", log: ViewController.logger, type: .debug, #function, #line)
+        
         isSeeking = true
     }
     
     @IBAction func progressSliderValueChanged(_ sender: UISlider) {
+        os_log("%@ - line %d", log: ViewController.logger, type: .debug, #function, #line)
+        
         let currentTime = TimeInterval(progressSlider.value)
         currentTimeLabel.text = currentTime.toMMSS()
     }
     
     @IBAction func progressSliderTouchedUp(_ sender: UISlider) {
+        os_log("%@ - line %d", log: ViewController.logger, type: .debug, #function, #line)
+        
         seek(sender)
         isSeeking = false
     }
@@ -99,6 +113,8 @@ class ViewController: UIViewController {
     // MARK: - Change Pitch
     
     @IBAction func changePitch(_ sender: UISlider) {
+        os_log("%@ [%.1f] - line %d", log: ViewController.logger, type: .debug, #function, sender.value, #line)
+        
         let step: Float = 100
         var pitch = roundf(pitchSlider.value)
         let newStep = roundf(pitch / step)
@@ -113,11 +129,15 @@ class ViewController: UIViewController {
         streamer.pitch = pitch
         pitchLabel.text = String(format: "%i cents", Int(pitch))
         pitchSlider.value = pitch
+        
+        os_log("%@ [%.1f] - line %d", log: ViewController.logger, type: .debug, #function, pitch, #line)
     }
     
     // MARK: - Change Rate
     
     @IBAction func changeRate(_ sender: UISlider) {
+        os_log("%@ [%.1f] - line %d", log: ViewController.logger, type: .debug, #function, sender.value, #line)
+        
         let step: Float = 0.25
         var rate = rateSlider.value
         let newStep = roundf(rate / step)
@@ -132,12 +152,16 @@ class ViewController: UIViewController {
         streamer.rate = rate
         rateLabel.text = String(format: "%.2fx", rate)
         rateSlider.value = rate
+        
+        os_log("%@ [%.1f] - line %d", log: ViewController.logger, type: .debug, #function, rate, #line)
     }
 }
 
 extension ViewController: StreamingDelegate {
     
     func streamer(_ streamer: Streaming, failedDownloadWithError error: Error, forURL url: URL) {
+        os_log("%@ [%@] - line %d", log: ViewController.logger, type: .debug, #function, error.localizedDescription, #line)
+        
         let alert = UIAlertController(title: "Download Failed",
                                       message: error.localizedDescription,
                                       preferredStyle: .alert)
@@ -148,10 +172,14 @@ extension ViewController: StreamingDelegate {
     }
     
     func streamer(_ streamer: Streaming, updatedDownloadProgress progress: Float, forURL url: URL) {
+        os_log("%@ [progress: %.2f] - line %d", log: ViewController.logger, type: .debug, #function, progress, #line)
+        
         progressSlider.progress = progress
     }
     
     func streamer(_ streamer: Streaming, changedState state: StreamingState) {
+        os_log("%@ [state: %@] - line %d", log: ViewController.logger, type: .debug, #function, state.rawValue, #line)
+        
         switch state {
         case .playing:
             playButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
@@ -161,6 +189,8 @@ extension ViewController: StreamingDelegate {
     }
     
     func streamer(_ streamer: Streaming, updatedCurrentTime currentTime: TimeInterval) {
+        os_log("%@ [currentTime: %@] - line %d", log: ViewController.logger, type: .debug, #function, currentTime.toMMSS(), #line)
+        
         if !isSeeking {
             progressSlider.value = Float(currentTime)
             currentTimeLabel.text = currentTime.toMMSS()
@@ -169,6 +199,7 @@ extension ViewController: StreamingDelegate {
     
     func streamer(_ streamer: Streaming, updatedDuration duration: TimeInterval) {
         let formattedDuration = duration.toMMSS()
+        os_log("%@ [duration: %@] - line %d", log: ViewController.logger, type: .debug, #function, formattedDuration, #line)
         
         durationTimeLabel.text = formattedDuration
         durationTimeLabel.isEnabled = true

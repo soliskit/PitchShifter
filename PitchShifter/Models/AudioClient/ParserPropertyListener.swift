@@ -6,6 +6,7 @@
 //  Copyright © 2020 David Solis. All rights reserved.
 //
 
+import os.log
 import AVFoundation
        
 func ParserPropertyChangeCallback(_ context: UnsafeMutableRawPointer,
@@ -20,12 +21,14 @@ func ParserPropertyChangeCallback(_ context: UnsafeMutableRawPointer,
         var format = AudioStreamBasicDescription()
         GetPropertyValue(&format, streamID, propertyID)
         parser.dataFormat = AVAudioFormat(streamDescription: &format)
+        os_log("Data format: %@ - line %d", log: Parser.loggerPropertyListenerCallback, type: .debug, String(describing: parser.dataFormat), #line)
         
     case kAudioFileStreamProperty_AudioDataPacketCount:
         GetPropertyValue(&parser.packetCount, streamID, propertyID)
+        os_log("Packet count: [%i] - line %d", log: Parser.loggerPropertyListenerCallback, type: .debug, parser.packetCount, #line)
 
     default:
-        print("Parser Property Listener Callback: \(propertyID.description)")
+        os_log("%@ - line %d", log: Parser.loggerPropertyListenerCallback, type: .debug, propertyID.description, #line)
     }
 }
 
@@ -42,10 +45,12 @@ func ParserPropertyChangeCallback(_ context: UnsafeMutableRawPointer,
 func GetPropertyValue<T>(_ value: inout T, _ streamID: AudioFileStreamID, _ propertyID: AudioFileStreamPropertyID) {
     var propSize: UInt32 = 0
     guard AudioFileStreamGetPropertyInfo(streamID, propertyID, &propSize, nil) == noErr else {
-        fatalError(propertyID.description)
+        os_log("Failed to get info for property: %@ - line %d", log: Parser.loggerPropertyListenerCallback, type: .error, "\(propertyID)", #line)
+        return
     }
     guard AudioFileStreamGetProperty(streamID, propertyID, &propSize, &value) == noErr else {
-        fatalError(propertyID.description)
+        os_log("Failed to get value [%@] - line %d", log: Parser.loggerPropertyListenerCallback, type: .error, "\(propertyID)", #line)
+        return
     }
 }
 
@@ -57,6 +62,7 @@ func ParserPacketCallback(_ context: UnsafeMutableRawPointer,
     let parser = Unmanaged<Parser>.fromOpaque(context).takeUnretainedValue()
     let packetDescriptionsOrNil: UnsafeMutablePointer<AudioStreamPacketDescription>? = packetDescriptions
     let isCompressed = packetDescriptionsOrNil != nil
+    os_log("%@ [bytes: %i, packets: %i, compressed: %@] - lines %d", log: Parser.loggerPacketCallback, type: .debug, #function, byteCount, packetCount, "\(isCompressed)", #line)
     
     /// At this point we should definitely have a data format
     guard let dataFormat = parser.dataFormat else {
